@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adm Rifa Rafaela</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main>
+        <header>
+            <h1>Adm Rifa Rafaela</h1>
+            <div class="alerta erro" id="erroGenerico">
+                <p id="erroGenericoTexto"></p>
+                <button class="close" onclick="onCloseError()">X</button>
+            </div>
+            <div class="alerta sucesso" id="sucessoGenerico">
+                <p id="sucessoGenericoTexto"></p>
+                <button class="close" onclick="onCloseSuccess()">X</button>
+            </div>
+            <!-- campos update -->
+            <div class="container">
+                <h3>Campos para atualização</h3>
+                <div class="containerHeader updateForm" id="updateForm">
+                    <!--  inputs para: name, contact1, contact2, contact3, sold_on, paid, has_comprovante -->
+                    <label for="name">Nome</label>
+                    <input type="text" name="name" id="updateName">
+                    <label for="contact1">Contato1</label>
+                    <input type="text" name="contact1" id="updateContact1">
+                    <label for="contact2">Contato2</label>
+                    <input type="text" name="contact2" id="updateContact2">
+                    <label for="contact3">Contato3</label>
+                    <input type="text" name="contact3" id="updateContact3">
+                </div>
+                <div class="containerHeader">
+                    <label for="sold_on">Vendido em</label>
+                    <input type="datetime-local" name="sold_on" id="updateSoldOn">
+                    <label for="paid">Pago</label>
+                    <select name="paid" id="updatePaid">
+                        <option value="null">Selecionar</option>
+                        <option value="true">Sim</option>
+                        <option value="false">Não</option>
+                    </select>
+                    <label for="has_comprovante">Tem comprovante</label>
+                    <select name="has_comprovante" id="updateHasComprovante">
+                        <option value="null">Selecionar</option>
+                        <option value="true">Sim</option>
+                        <option value="false">Não</option>
+                    </select>
+                </div>
+            </div>
+            <div class="container filtros">
+                <h3>Filtros</h3>
+                <div class="containerHeader">
+                    <!-- name, imcludesOrExactly select, contact1, contact2, contact3, paid, sold, sold_on, has_comprovante -->
+                    <label for="name">Nome</label>
+                    <input type="text" name="name" id="filterName">
+                    <!-- <label for="includesOrExactly">Inclui ou é exatamente</label> -->
+                    <select name="includesOrExactly" id="filterIncludesOrExactly">
+                        <option value="includes">Inclui</option>
+                        <option value="exactly">É exatamente</option>
+                    </select>
+                    <label for="contact1">Contato1</label>
+                    <input type="text" name="contact1" id="filterContact1">
+                    <label for="contact2">Contato2</label>
+                    <input type="text" name="contact2" id="filterContact2">
+                    <label for="contact3">Contato3</label>
+                    <input type="text" name="contact3" id="filterContact3">
+                </div>
+                <div class="containerHeader">
+                    <!-- options null, true, false -->
+                    <label for="paid">Pago</label>
+                    <select name="paid" id="filterPaid">
+                        <option value="null">Selecionar</option>
+                        <option value="true">Sim</option>
+                        <option value="false">Não</option>
+                    </select>
+                    <!-- options null, true, false -->
+                    <label for="sold">Vendido</label>
+                    <select name="sold" id="filterSold">
+                        <option value="null">Selecionar</option>
+                        <option value="true">Sim</option>
+                        <option value="false">Não</option>
+                    </select>
+                    <label for="sold_on">Vendido antes de:</label>
+                    <input type="datetime-local" name="sold_on" id="filterSoldOn">
+                    <!-- options null, true, false -->
+                    <label for="has_comprovante">Tem comprovante</label>
+                    <select name="has_comprovante" id="filterHasComprovante">
+                        <option value="null">Selecionar</option>
+                        <option value="true">Sim</option>
+                        <option value="false">Não</option>
+                    </select>
+                </div>
+            </div>
+            <div class="containerHeader buttons">
+                <!-- buscar, limparCampos, gerarComprovante, markAsPaid, unpay, releaseReservedForMoreThan48hours, update -->
+                <button id="buscar" onclick="onSearchRaffles()">Buscar</button>
+                <button id="limparCampos" onclick="onCleanFields()">Limpar campos</button>
+                <button id="gerarComprovante" onclick="onGerarComprovante()">Gerar comprovante</button>
+                <button id="markAsPaid" onclick="onMarkAsPaid()">Marcar como pago</button>
+                <button id="unpay" onclick="onMarkAsUnpaid()">Desmarcar como pago</button>
+                <button id="releaseReservedForMoreThan48hours" onclick="onReleaseReservedForMoreThan48Hours()">Liberar reservados por mais de 48h</button>
+                <button id="update" onclick="onUpdateRaffles()">Atualizar dados do(s) numero(s)</button>
+            </div>
+        </header>
+        <!-- cabeçalho de acumuladores em forma de tabela, total encontrado, total valor encontrado, total selecionado, total valor selecionado -->
+        <div class="container acumuladores">
+            <div class="card">
+                <h4>Quantidade de numeros encontrada</h4>
+                <p id="qtFound">42</p>
+            </div>
+            <div class="card">
+                <h4>Valor total dos numeros encontrados</h4>
+                <p id="totalValueFound">R$ 42</p>
+            </div>
+            <div class="card">
+                <h4>Quantidade de numeros selecionada</h4>
+                <p id="qtSelected">42</p>
+            </div>
+            <div class="card">
+                <h4>Valor total dos numeros selecionados</h4>
+                <p id="totalValueSelected">R$ 42</p>
+            </div>
+        </div>        
+        <!-- tabela com todos o dados, colunas: checkbox, numero, nome, contato1, contato2, contato3, vendido em, pago -->
+        <div class="container lista">
+            <table>
+                <thead>
+                    <tr>
+                        <th><input 
+                            type="checkbox" 
+                            name="checkAll" 
+                            id="checkAll" 
+                            onclick="selectAllRaffles()"
+                        ></th>
+                        <th>Número</th>
+                        <th>Nome</th>
+                        <th>Contato1</th>
+                        <th>Contato2</th>
+                        <th>Contato3</th>
+                        <th>Vendido em</th>
+                        <th>Pago</th>
+                        <th>Tem comprovante</th>
+                    </tr>
+                </thead>
+                <tbody id="tableBody">
+                </tbody>
+            </table>
+        </div>
+    </main>
+    <canvas class="hide" id="canvas"></canvas>
+    <script src="main.js"></script>
+</body>
+</html>

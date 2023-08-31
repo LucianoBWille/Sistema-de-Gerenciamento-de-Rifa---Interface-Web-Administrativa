@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Busca Ganhador da Rifa</title>
+
+    <link rel="stylesheet" href="winner.css">
+</head>
+<body>
+    <!-- input centralizado para informar o numero do vencedor e div abaixo para preencrer com o nome do vencedor -->
+    <label for="winner">Informe o número do ganhador</label>
+    <div class="search">
+        <input type="number" name="winner" id="winner">
+        <button onclick="onSearchWinner()">Buscar</button>
+    </div>
+    <div class="vencedor">Ganhador do prêmio:</div>
+    <div id="winnerName">...</div>
+    <script src="winner.js"></script>
+</body>
+</html>

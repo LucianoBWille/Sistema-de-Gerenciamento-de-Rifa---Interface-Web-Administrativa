@@ -1,0 +1,159 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+h1 {
+    font-size: 2.5rem;
+    font-weight: 600;
+    text-align: center;
+    margin: 10px 0;
+}
+
+.alerta {
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+    flex-direction: row;
+    align-items: center;
+    text-align: center;
+    width: calc(100% - 20px);
+    padding: 15px;
+    margin: 10px;
+    /* gap: 10px; */
+    border: #000 1px solid;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.alerta.erro {
+    background-color: #ff0000;
+}
+
+.alerta.sucesso {
+    background-color: #00ff00;
+}
+
+.alerta p {
+    display: inline;
+    text-align: left;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: calc(100% - 20px);
+    padding: 15px;
+    margin: 10px;
+    /* gap: 10px; */
+    border: #000 1px solid;
+    border-radius: 5px;
+}
+
+.containerHeader {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    padding: 15px;
+    gap: 10px;
+}
+
+button {
+    /* background-color: #fff; */
+    border: 1px solid #000;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.container.acumuladores {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 10px;
+}
+
+.acumuladores .card {
+    width: 100%;
+    margin: 5px;
+    padding: 10px;
+    border: #000 1px solid;
+    border-radius: 5px;
+}
+
+.acumuladores .card h4 {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    padding: 15px;
+    gap: 10px;
+}
+
+.acumuladores .card p {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    padding: 15px;
+    gap: 10px;
+}
+
+.lista table {
+    border-collapse: collapse;
+    align-items: center;
+    width: 100%;
+}
+
+.lista table thead {
+    width: 100%;
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-align: center;
+}
+
+.lista table thead tr {
+    width: 100%;
+    border: 1px solid #000;
+}
+
+.lista table thead tr th {
+    padding: 10px;
+    border: #000 1px solid;
+    background-color: grey;
+}
+
+.lista table tbody {
+    width: 100%;
+    text-align: center;
+}
+
+.lista table tbody tr {
+    width: 100%;
+    border: 1px solid #000;
+}
+
+.lista table tbody tr td {
+    padding: 7px;
+    border: #000 1px solid;
+}
+
+.lista table tbody tr:nth-child(2n) {
+    background-color: lightgrey;
+}
+
+.hide {
+    display: none;
+    visibility: hidden;
+}
