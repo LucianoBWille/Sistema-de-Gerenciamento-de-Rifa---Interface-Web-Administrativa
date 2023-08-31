@@ -1,4 +1,5 @@
-const API_URL = 'http://localhost:3000'
+const API_URL = 'https://rifa-rafaela-adm-api.vercel.app/';
+// const API_URL = 'http://localhost:3000'
 
 const state = {
     raffles: [],
